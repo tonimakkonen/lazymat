@@ -1,5 +1,7 @@
 package fi.tonimakkonen.lazymat;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class TransposeOperation extends Operation {
 
     final Matrix base;
@@ -23,48 +25,38 @@ public class TransposeOperation extends Operation {
         return base.size();
     }
 
-    @Override
-    public double get(int y, int x) {
-        // checking y & x done in either one
-        if (calculated != null) {
-            return calculated.get(y, x);
-        } else {
-            return base.get(x, y);
-        }
+
+    double actualGet(int y, int x) {
+        return base.get(x, y);
     }
 
-    @Override
-    public double costGet() {
-        if (calculated != null) {
-            return 0.0;
-        } else {
-            return base.costGet();
-        }
+    double actualCostGet() {
+        return base.costGet();
     }
 
-    @Override
-    public double costCalc() {
-        if (calculated != null) {
-            return 0.0;
-        } else {
-            // in order to calculate the new matrix, we need to calculate the original matrix and copy the data
-            return base.costCalc() + size();
-        }
+    double actualCostCalc() {
+        // need to calculate base and copy n values
+        return base.costCalc() + base.size();
     }
 
-    @Override
-    public MatrixBase calc() {
+    ActualMatrix actualCalc() {
+
         // We need the actual, raw data
-        MatrixBase b = base.calc();
-        double [] newData = new double[b.data.length];
-        for (int y = 0; y < b.height; y++) {
-            for (int x = 0; x < b.width; x++) {
-                // TODO: Check this is correct. Also, could be faster.
-                newData[x*b.height + y] = b.data[x + y*b.width];
+        ActualMatrix b = base.calc();
+        if (b instanceof DenseMatrix) {
+            DenseMatrix dm = (DenseMatrix) b;
+            double [] newData = new double[dm.data.length];
+            for (int y = 0; y < dm.height; y++) {
+                for (int x = 0; x < dm.width; x++) {
+                    // TODO: Check this is correct. Also, could be faster.
+                    newData[x*dm.height + y] = dm.data[x + y*dm.width];
+                }
             }
+            return calculated;
+        } else {
+            throw new IllegalStateException("Matrix type " + b + " not understood");
         }
-        calculated = new MatrixBase(base.width(), base.height(), newData);
-        return calculated;
+
     }
 
 }

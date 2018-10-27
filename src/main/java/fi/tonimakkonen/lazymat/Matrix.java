@@ -95,9 +95,9 @@ public interface Matrix {
      * Calculate the entire matrix, i.e. every single element. Subsequent calls to {@code calc}, {@link #need(int)}, and
      * {@link #needAll()} will have no further effect. Also, calling {@link #get(int, int)} will return in constant
      * time.
-     * @return matrix in base form, i.e. {@link MatrixBase}
+     * @return matrix in base form, i.e. {@link DenseMatrix}
      */
-    MatrixBase calc();
+    ActualMatrix calc();
 
     /**
      * Indiate that you need to know {@code count} number of elements of this matrix. Calling this method possibly calls

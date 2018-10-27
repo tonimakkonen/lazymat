@@ -1,12 +1,15 @@
 package fi.tonimakkonen.lazymat;
 
-public class MatrixBase extends MatrixDefault {
+/**
+ * Dense matrix
+ */
+public class DenseMatrix extends ActualMatrix {
 
     final int height, width;
     final double [] data;
 
     // Package private constructor. No validity checks and no copying of data.
-    MatrixBase(int height, int width, double [] data) {
+    DenseMatrix(int height, int width, double [] data) {
         this.height = height;
         this.width = width;
         this.data = data;
@@ -33,24 +36,4 @@ public class MatrixBase extends MatrixDefault {
         return data[x + y*width];
     }
 
-    @Override
-    public double costGet() {
-        // TODO: should this be two? (one mult and one sum)
-        return 0.0;
-    }
-
-    @Override
-    public double costCalc() {
-        return 0.0; // no-op
-    }
-
-    @Override
-    public MatrixBase calc() {
-        return this; // no-op
-    }
-
-    @Override
-    public void need(int count) {
-        // no-op
-    }
 }

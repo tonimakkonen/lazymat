@@ -1,5 +1,6 @@
 package fi.tonimakkonen.lazymat;
 
+
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Algorithm {
