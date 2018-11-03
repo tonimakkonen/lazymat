@@ -1,8 +1,14 @@
 package fi.tonimakkonen.lazymat;
 
 /**
- * Base class for any matrix that has the element data stored and does not need to be calculated, e.g.
- * {@link DenseMatrix}
+ * <p>
+ *     Base class for any actual matrix, i.e. a matrix where no calculation is needed to access the data. All costs are
+ *     zero, calls to {@link #calc()} returns {@code this}, and related methods do nothing.
+ * </p>
+ * <p>
+ *     Implementing classed must be declared final and are responsible for storing the data. Every {@link Operation}
+ *     must be able to handle every implementation of this class.
+ * </p>
  */
 public abstract class ActualMatrix extends MatrixDefault {
 
