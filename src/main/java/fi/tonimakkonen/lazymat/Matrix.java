@@ -1,7 +1,8 @@
 package fi.tonimakkonen.lazymat;
 
 /**
- * A matrix. This can be implemented be either a real matrix or a calculation that results in a matrix.
+ * Interface for a matrix. This can be implemented by either an {@link ActualMatrix} containing the matrix data or an
+ * {@link Operation} that results in a matrix, such as the multiplication of two matrices.
  */
 public interface Matrix {
 
@@ -18,29 +19,34 @@ public interface Matrix {
     int width();
 
     /**
-     * Number of elements in matrix.
+     * Number of elements in matrix. This equals {@link #height()} times {@link #width()}.
      * @return number of elements
      */
     int size();
 
     /**
-     * Get element at (y, x) where (0,0) represents top left in normal notation, y is the row, and x is the column.
+     * Get element at (y, x) where y is the row and x is the column. (0,0) is top left in normal notation. This method
+     * has essentially no computational cost when dealing with an {@link ActualMatrix}. However, for an
+     * {@link Operation} getting actual values might carry computational cost and can trigger calculations such as
+     * {@link #calc()} or have values cached.
      * @param y row
      * @param x column
      * @return value at (y, x)
      * @throws IllegalArgumentException if y or x are outside the matrix
+     * @see #costGet()
+     * @see #costCalc()
+     * @see #calc() 
      */
     double get(int y, int x);
 
     /**
-     * Get a sub matrix of this matrix. If the cost of getting one element is larger than calculating the entire matrix,
-     * the entire matrix is calculated.
+     * Get a sub matrix of this matrix.
      * @param y starting row
      * @param x starting column
      * @param height height of the sub matrix
      * @param width width of the sub matrix
      * @return sub matrix
-     * @throws IllegalArgumentException if the created matrix goes outside the original marix
+     * @throws IllegalArgumentException if the created matrix goes outside the original matrix
      */
     Matrix subMatrix(int y, int x, int height, int width);
 
@@ -52,7 +58,7 @@ public interface Matrix {
     Matrix add(double c);
 
     /**
-     * Add a matrix to this matrix.
+     * Matrix addition
      * @param m matrix to add
      * @return new matrix
      */
@@ -66,8 +72,8 @@ public interface Matrix {
     Matrix mult(double c);
 
     /**
-     * Multiply this matrix by another matrix from the right hand side. The result is A*B, where A is this matrix and B
-     * is the matrix passed as the parameter.
+     * Matrix multiplication from the right hand side, i.e. A * B where A is this matrix and B is passed as the
+     * parameter.
      * @param m another matrix
      * @return new matrix
      */
