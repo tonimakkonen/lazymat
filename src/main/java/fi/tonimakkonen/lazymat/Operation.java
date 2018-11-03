@@ -4,10 +4,13 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * <p>
- * An operation resulting in a matrix, such as a transpose of a matrix, the multiplication of two matrices, etc. This
- * class is responsible for handling caching of results from actual operations. Implementing classes need to implement
- * four methods: {@link #actualGet(int, int)}, {@link #actualCostGet()}, {@link #actualCostCalc()},
- * {@link #actualCalc()}.
+ *     An operation resulting in a matrix, such as a transpose of a matrix, the multiplication of two matrices, etc.
+ *     This class is responsible for handling caching of results from actual operations. Implementing classes need to
+ *     implement four methods: {@link #actualGet(int, int)}, {@link #actualCostGet()}, {@link #actualCostCalc()}, and
+ *     {@link #actualCalc()}.
+ * </p>
+ * <p>
+ *     Any implementing class needs to handle every potential implementation of {@link ActualMatrix}.
  * </p>
  */
 public abstract class Operation extends MatrixDefault {

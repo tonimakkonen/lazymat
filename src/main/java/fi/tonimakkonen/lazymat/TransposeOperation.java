@@ -1,7 +1,5 @@
 package fi.tonimakkonen.lazymat;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class TransposeOperation extends Operation {
 
     final Matrix base;
@@ -27,6 +25,7 @@ public class TransposeOperation extends Operation {
 
 
     double actualGet(int y, int x) {
+        // bounds checked here
         return base.get(x, y);
     }
 
@@ -35,14 +34,25 @@ public class TransposeOperation extends Operation {
     }
 
     double actualCostCalc() {
-        // need to calculate base and copy n values
-        return base.costCalc() + base.size();
+        Class<? extends ActualMatrix> cl = base.calcClass();
+        if (cl == DenseMatrix.class) { // final class
+            return base.costCalc() + base.size();
+        } else {
+            throw new IllegalStateException("Unknown class: " + cl);
+        }
+    }
+
+    @Override
+    public Class<? extends ActualMatrix> calcClass() {
+        // Transpose operation does not change the base matrix class in any
+        return base.calcClass();
     }
 
     ActualMatrix actualCalc() {
 
         // We need the actual, raw data
         ActualMatrix b = base.calc();
+
         if (b instanceof DenseMatrix) {
             DenseMatrix dm = (DenseMatrix) b;
             double [] newData = new double[dm.data.length];
@@ -54,7 +64,7 @@ public class TransposeOperation extends Operation {
             }
             return calculated;
         } else {
-            throw new IllegalStateException("Matrix type " + b + " not understood");
+            throw new IllegalStateException("Unknown class: " + b);
         }
 
     }

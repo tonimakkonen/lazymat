@@ -24,6 +24,11 @@ public abstract class ActualMatrix extends MatrixDefault {
     }
 
     @Override
+    public Class<? extends ActualMatrix> calcClass() {
+        return this.getClass();
+    }
+
+    @Override
     public void need(int count) {
     }
 

@@ -51,13 +51,6 @@ public interface Matrix {
     Matrix subMatrix(int y, int x, int height, int width);
 
     /**
-     * Add a constant to this matrix.
-     * @param c constant
-     * @return new matrix
-     */
-    Matrix add(double c);
-
-    /**
      * Matrix addition
      * @param m matrix to add
      * @return new matrix
@@ -104,6 +97,12 @@ public interface Matrix {
      * @return matrix in base form, i.e. {@link DenseMatrix}
      */
     ActualMatrix calc();
+
+    /**
+     * Best estimate of returned class from the {@link #calc()} operation.
+     * @return class
+     */
+    Class<? extends ActualMatrix> calcClass();
 
     /**
      * Indiate that you need to know {@code count} number of elements of this matrix. Calling this method possibly calls

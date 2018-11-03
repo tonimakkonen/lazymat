@@ -9,10 +9,6 @@ public class Algorithm {
         throw new NotImplementedException();
     }
 
-    static Matrix add(Matrix m, double c) {
-        throw new NotImplementedException();
-    }
-
     static Matrix add(Matrix a, Matrix b) {
         throw new NotImplementedException();
     }

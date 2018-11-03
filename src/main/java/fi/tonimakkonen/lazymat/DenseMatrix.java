@@ -3,7 +3,7 @@ package fi.tonimakkonen.lazymat;
 /**
  * Dense matrix
  */
-public class DenseMatrix extends ActualMatrix {
+public final class DenseMatrix extends ActualMatrix {
 
     final int height, width;
     final double [] data;

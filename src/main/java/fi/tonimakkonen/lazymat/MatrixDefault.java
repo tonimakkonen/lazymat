@@ -11,11 +11,6 @@ public abstract class MatrixDefault implements Matrix {
     }
 
     @Override
-    public Matrix add(double c) {
-        return Algorithm.add(this, c);
-    }
-
-    @Override
     public Matrix add(Matrix m) {
         return Algorithm.add(this, m);
     }
