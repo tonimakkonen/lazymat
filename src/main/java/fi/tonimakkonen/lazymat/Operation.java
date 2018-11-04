@@ -46,10 +46,10 @@ public abstract class Operation extends MatrixDefault {
 
     @Override
     public ActualMatrix calc() {
-        if (calculated != null) {
-            return calculated;
+        if (calculated == null) {
+            calculated = actualCalc();
         }
-        return actualCalc();
+        return calculated;
     }
 
     @Override
