@@ -2,7 +2,7 @@ package fi.tonimakkonen.lazymat;
 
 public final class DiagonalMatrix extends ActualMatrix {
 
-    int height, width;
+    final int height, width;
     double [] diagonal;
 
     DiagonalMatrix(int height, int width, double [] diagonal) {
