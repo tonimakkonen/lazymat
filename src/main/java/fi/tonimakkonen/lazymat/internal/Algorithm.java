@@ -16,7 +16,12 @@ public class Algorithm {
     }
 
     static Matrix mult(Matrix m, double c) {
-        throw new NotImplementedException();
+        // TODO: Need to check for smart optimisation
+        if (m instanceof ConstantMultOperation) {
+            ConstantMultOperation b = (ConstantMultOperation) m;
+            return new ConstantMultOperation(b.base, b.value * c);
+        }
+        return new ConstantMultOperation(m, c);
     }
 
     static Matrix mult(Matrix a, Matrix b) {

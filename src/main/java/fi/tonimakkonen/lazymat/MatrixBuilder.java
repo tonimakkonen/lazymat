@@ -48,5 +48,5 @@ public class MatrixBuilder extends InternalMatrixBuilder {
         // TODO: check what matrix type is the smartest
         return newDense(height, width, data);
     }
-    
+
 }
