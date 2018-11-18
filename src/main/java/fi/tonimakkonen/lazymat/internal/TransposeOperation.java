@@ -1,4 +1,6 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
+
+import fi.tonimakkonen.lazymat.Matrix;
 
 public class TransposeOperation extends Operation {
 
@@ -23,16 +25,18 @@ public class TransposeOperation extends Operation {
         return base.size();
     }
 
-
+    @Override
     double actualGet(int y, int x) {
         // bounds checked here
         return base.get(x, y);
     }
 
+    @Override
     double actualCostGet() {
         return base.costGet();
     }
 
+    @Override
     double actualCostCalc() {
         Class<? extends ActualMatrix> cl = base.calcClass();
         if (cl == DenseMatrix.class) {

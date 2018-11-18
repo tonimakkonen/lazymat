@@ -1,4 +1,4 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
 
 /**
  * <p>

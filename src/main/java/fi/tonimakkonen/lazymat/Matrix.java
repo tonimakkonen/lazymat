@@ -1,5 +1,9 @@
 package fi.tonimakkonen.lazymat;
 
+import fi.tonimakkonen.lazymat.internal.ActualMatrix;
+import fi.tonimakkonen.lazymat.internal.DenseMatrix;
+import fi.tonimakkonen.lazymat.internal.Operation;
+
 /**
  * Interface for a matrix. This can be implemented by either an {@link ActualMatrix} containing the matrix data or an
  * {@link Operation} that results in a matrix, such as the multiplication of two matrices.

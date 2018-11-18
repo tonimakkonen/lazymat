@@ -1,6 +1,4 @@
-package fi.tonimakkonen.lazymat;
-
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+package fi.tonimakkonen.lazymat.internal;
 
 /**
  * <p>
@@ -74,19 +72,19 @@ public abstract class Operation extends MatrixDefault {
     // This base class handles caching of results
 
     double actualGet(int y, int x) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     double actualCostGet() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     double actualCostCalc() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     ActualMatrix actualCalc() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
 }

@@ -1,6 +1,8 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
 
 
+import fi.tonimakkonen.lazymat.Matrix;
+import fi.tonimakkonen.lazymat.internal.TransposeOperation;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Algorithm {

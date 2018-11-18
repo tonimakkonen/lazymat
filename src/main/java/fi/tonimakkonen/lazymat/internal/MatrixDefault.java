@@ -1,4 +1,6 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
+
+import fi.tonimakkonen.lazymat.Matrix;
 
 /**
  * Class with most of default matrix operations

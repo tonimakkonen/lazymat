@@ -1,5 +1,6 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
 
+import fi.tonimakkonen.lazymat.internal.DiagonalMatrix;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

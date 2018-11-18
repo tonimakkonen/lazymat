@@ -1,5 +1,8 @@
-package fi.tonimakkonen.lazymat;
+package fi.tonimakkonen.lazymat.internal;
 
+import fi.tonimakkonen.lazymat.Matrix;
+import fi.tonimakkonen.lazymat.internal.DenseMatrix;
+import fi.tonimakkonen.lazymat.internal.TransposeOperation;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
